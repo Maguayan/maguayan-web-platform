@@ -12,10 +12,10 @@ import microplastic from '../../public/microplastic.jpg'
 
 export default async function Home() {
   return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 min-h-screen flex-col text-black px-10 md:px-14 lg:px-24 xl:px-32 2xl:px-40 py-40 place-items-center gap-4 backgroundImage">
-        <div className='flex flex-col lg:flex-row 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-2 2xl:col-span-1 bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white p-10 rounded-lg w-full h-full'>
-          <Image src={microplastic} className='md:w-full lg:w-3/5 2xl:w-full h-full'/>
-          <div className='py-6 flex w-full lg:items-center 2xl:items-start flex-col'>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 min-h-screen flex-col text-black px-10 md:px-14 lg:px-24 xl:px-32 2xl:px-40 py-40 place-items-center lg:place-items-start 2xl:place-items-center gap-4 backgroundImage">
+        <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white p-10 rounded-lg w-full h-full lg:h-auto 2xl:h-full'>
+          <Image src={microplastic} className='md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full'/>
+          <div className='py-6 flex w-full lg:items-start 2xl:items-start flex-col'>
             <div className='flex font-medium text-white md:text-[#333333] gap-2'>
               <p>DATE TAKEN:</p>
               <p className='font-bold'>August 7, 2024</p>
@@ -38,7 +38,7 @@ export default async function Home() {
             <a href="#" className='bg-[#C9C794] text-[#333333] font-bold px-4 py-2 rounded-lg text-xs hover:bg-[#333333] hover:text-white'>View Logs</a>
           </div>
         </div>
-        <div className='grid grid-cols-2 col-span-2 rounded-lg w-full h-full gap-x-4'>
+        <div className='grid grid-cols-2 lg:grid-cols-1 col-span-2 lg:col-span-1 2xl:col-span-2 rounded-lg w-full h-full gap-x-4'>
           <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white w-full md:h-28 lg:h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0'>
             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md text-white md:text-[#333333]'>
               TOTAL MICROPLASTICS DETECTED
@@ -55,7 +55,7 @@ export default async function Home() {
               MANILA CITY
             </p>
           </div>
-          <div className='col-span-2 p-10 rounded-lg bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white w-full h-96'>
+          <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 p-10 rounded-lg bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white w-full h-96'>
 
           </div>
           <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white w-full h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0'>
@@ -79,6 +79,9 @@ export default async function Home() {
               </p>
             </div>
           </div>
+        </div>
+        <div className='hidden lg:flex 2xl:hidden col-span-2 lg:col-span-2 p-10 rounded-lg bg-[#333333] bg-opacity-85 md:bg-opacity-100 md:bg-white w-full h-96'>
+
         </div>
       </div>
   );
