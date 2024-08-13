@@ -6,7 +6,6 @@ import {
 } from '@clerk/nextjs'
 
 import LandingPage from '../home/page';
-import Link from "next/link";
 import '../../styles/globals.css';
 import Image from 'next/image';
 import microplastic from '../../../public/microplastic.jpg'

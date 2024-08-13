@@ -1,11 +1,3 @@
-import {
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton
-} from '@clerk/nextjs'
-  
-
 import '../../../src/styles/globals.css';
 import Image from 'next/image';
 import logo from '../../../public/logo-white.png'
