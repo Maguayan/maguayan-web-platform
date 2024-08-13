@@ -21,7 +21,7 @@ export default async function Dashboard() {
             <SignedIn>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 min-h-screen flex-col text-black px-6 sm:px-10 md:px-14 lg:px-24 xl:px-32 2xl:px-40 py-28 place-items-center lg:place-items-start 2xl:place-items-center gap-4 backgroundImage">
                     <div className='col-span-2 md:col-span-2 2xl:col-span-3 w-full h-auto items-center grid place-content-end grid-flow-col gap-x-4'>
-                        <a href="#" className='font-bold text-xs md:text-sm px-5 md:px-7 py-2 bg-[#C9C794] text-[#333333] rounded-lg hover:bg-[#333333] hover:text-white'>Settings <FontAwesomeIcon className='flex items-center ml-1' icon={faGear}/></a>
+                        <a href="/settings" className='font-bold text-xs md:text-sm px-5 md:px-7 py-2 bg-[#C9C794] text-[#333333] rounded-lg hover:bg-[#333333] hover:text-white'>Settings <FontAwesomeIcon className='flex items-center ml-1' icon={faGear}/></a>
                         <UserButton />
                     </div>
                     <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-[#303030] bg-opacity-50 text-white p-10 rounded-lg w-full h-full border-2 border-[#C9C794]'>

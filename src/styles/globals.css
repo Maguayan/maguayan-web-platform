@@ -15,6 +15,60 @@
     background-repeat: no-repeat;
   }
 
+.cl-footer, .cl-signIn-password, .cl-signIn-forgotPasswordMethods{
+    background:rgba(30, 30, 30, 0.5);
+}
+
+.cl-internal-wf8x4b, .cl-identityPreviewText, .cl-formFieldAction__password, .cl-internal-1v2koqu, .cl-internal-xexz24, .cl-internal-1tt4afi, .cl-internal-kyvqj0{ 
+    color: white;
+}
+
+.cl-internal-16mc20d p, .cl-internal-16mc20d a{
+    color: #333333;
+}
+
+.cl-internal-kvcwmp, .cl-internal-1gpxfr6{
+    background: #C9C794;
+    color: #333333;
+}
+
+.cl-dividerLine{
+    background: white;
+}
+
+.cl-internal-16mc20d a, .cl-internal-16mc20d p, .cl-internal-q2718p{
+    color: white;
+}
+
 .cl-footerAction__signIn{
     display: none;
+    background-color:rgba(30, 30, 30, 0.5);
+}
+
+.cl-signIn-start{
+    background-color:rgba(30, 30, 30, 0.5);
+    margin-bottom: 6px;
+}
+
+.cl-headerTitle{
+    color: white;
+}
+
+.cl-headerSubtitle{
+    color: white;
+}
+
+.cl-formFieldLabel{
+    color: white;
+}
+
+.cl-internal-ttumny{
+    background: #C9C794;
+    color: #333333;
+    font-weight: 600;
+}
+
+.cl-button:hover{
+    background: #C9C794;
+    color: #333333;
 }
