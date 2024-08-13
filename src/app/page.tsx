@@ -7,14 +7,14 @@ import {
 
 import Link from "next/link";
 import Dashboard from './dashboard/page';
-import Login from './login/page';
+import LandingPage from './home/page';
 
 export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <SignedOut>
-        <Login/>
+        <LandingPage/>
       </SignedOut>
       <SignedIn>
         <Dashboard/>
