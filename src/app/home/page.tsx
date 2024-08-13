@@ -13,11 +13,11 @@ export default function Home(){
                 />
                 <p className='text-white w-full text-left md:text-justify text-xs md:text-md xl:text-lg'>
                     Introducing MAGUAYAN: the cutting-edge <strong>Microplastics Assessment and Gathering Unit for Analyzing 
-                    Yield in Aquatic Networks.</strong> This innovative buoy is set to transform environmental monitoring through 
-                    advanced technology deployed across diverse aquatic environments. Equipped with an electronic microscope, 
+                    Yield in Aquatic Networks.</strong> This innovative buoy is set to transform environmental monitoring through
+                    advanced technology deployed across diverse aquatic environments. Equipped with an electronic microscope,
                     Raspberry Pi 4B, and precision motors, MAGUAYAN efficiently collects, detects, and quantifies microplastics 
                     in real-time. The collected data is seamlessly transmitted to a centralized database, offering critical 
-                    insights into microplastic pollution. By supporting the United Nations' 17 Sustainable Development Goals, 
+                    insights into microplastic pollution. By supporting the United Nations&apos; 17 Sustainable Development Goals, 
                     MAGUAYAN contributes directly to <strong>Clean Water and Sanitation (Goal 6), Life Below Water (Goal 14)</strong>, 
                     and <strong>Responsible Consumption and Production (Goal 12)</strong>, while promoting  
                     <strong> Sustainable Cities and Communities (Goal 11), Climate Action (Goal 13)</strong>, 
