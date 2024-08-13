@@ -14,3 +14,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+.cl-footerAction__signIn{
+    display: none;
+}

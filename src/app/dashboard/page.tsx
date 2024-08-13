@@ -5,8 +5,7 @@ import {
     UserButton
 } from '@clerk/nextjs'
 
-import Login from '../login/page';
-  
+import LandingPage from '../home/page';
 import Link from "next/link";
 import '../../styles/globals.css';
 import Image from 'next/image';
@@ -19,7 +18,7 @@ export default async function Dashboard() {
     return (
         <div>
             <SignedOut>
-                <Login/>
+                <LandingPage/>
             </SignedOut>
             <SignedIn>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 min-h-screen flex-col text-black px-6 sm:px-10 md:px-14 lg:px-24 xl:px-32 2xl:px-40 py-28 place-items-center lg:place-items-start 2xl:place-items-center gap-4 backgroundImage">
