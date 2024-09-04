@@ -5,10 +5,10 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 export const userRouter = createTRPCRouter({
     getById : publicProcedure
         .input(z.string())
-        .query(({ ctx, input }) => {
+        .query(({ ctx, clerk_id }) => {
             return ctx.db.user.findFirst({
                 where : {
-                    clerkId : input,
+                    clerkId : clerk_id,
                 },
                 select : {
                     id : true,
@@ -19,10 +19,10 @@ export const userRouter = createTRPCRouter({
 
     getAccess : publicProcedure
         .input(z.string())
-        .query(({ ctx, input }) => {
+        .query(({ ctx, clerk_id }) => {
             return ctx.db.user.findFirst({
                 where : {
-                    clerkId : input,
+                    clerkId : clerk_id,
                 },
                 select : {
                     hasAccessTo : true,

@@ -4,6 +4,7 @@ import { userRouter } from "./routers/user";
 import { buoyDataRouter } from "./routers/buoyData";
 import { buoyRouter } from "./routers/buoy";
 import { configRouter } from "./routers/config";
+import { accessRouter } from "./routers/access";
 
 /**
  * This is the primary router for your server.
@@ -16,6 +17,7 @@ export const appRouter = createTRPCRouter({
   buoy: buoyRouter,
   config: configRouter,
   buoyData: buoyDataRouter,
+  access: accessRouter,
 });
 
 // export type definition of API

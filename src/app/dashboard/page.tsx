@@ -17,17 +17,23 @@ export default async function Dashboard() {
 
     const { userId } = auth();
     const getUser = await api.user.getById( userId );
-
     const getBuoy = await api.buoy.getById( '1' )
-
     const getLatest = await api.buoyData.getLatest( '1' );
     const getConfig = await api.config.getById( (getBuoy?.configId)?.toString() )
+    const getAccess = await api.access.getByBuoy( '1' )
 
     var count : number = 0
     getLatest.forEach( data => { count += data.detectedMicroplastics });
 
     var min_diff = getConfig?.interval * 60
     const next_collection = new Date(getLatest.at(0)?.createdAt.getTime() + (min_diff)*60000).toLocaleString();
+
+    var access : boolean = false; 
+    getAccess?.forEach( data => { 
+        if (data.userId == getUser?.id) { 
+                access = true
+            } 
+        });
 
     return (
         <div>

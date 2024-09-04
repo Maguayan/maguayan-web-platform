@@ -5,20 +5,20 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 export const buoyDataRouter = createTRPCRouter({
     getById : publicProcedure
         .input(z.string())
-        .query(({ ctx, input }) => {
+        .query(({ ctx, id }) => {
             return ctx.db.detectProcesses.findFirst({
                 where : {
-                    id : input,
+                    id : id,
                 },
             });
         }),
 
     getLatest : publicProcedure
         .input(z.string())
-        .query(({ctx, input}) => {
+        .query(({ctx, buoy_id}) => {
             return ctx.db.detectProcesses.findMany({
                 where : {
-                    buoyId : input,
+                    buoyId : buoy_id,
                 },
                 orderBy : [
                     {
