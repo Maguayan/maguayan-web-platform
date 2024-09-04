@@ -11,13 +11,13 @@ import microplastic from '../../../public/microplastic.jpg'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+
 import { api } from '~/trpc/server';
-import { useRouter } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
 
 export default async function Dashboard() {
 
-    const { userId } = auth()
+    const { userId } = auth();
     const getUser = await api.user.getById( userId );
 
     return (

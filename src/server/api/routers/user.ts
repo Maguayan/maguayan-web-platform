@@ -6,10 +6,27 @@ export const userRouter = createTRPCRouter({
     getById : publicProcedure
         .input(z.string())
         .query(({ ctx, input }) => {
-            return ctx.db.user.findUnique({
+            return ctx.db.user.findFirst({
                 where : {
                     clerkId : input,
                 },
+                select : {
+                    id : true,
+                    name : true,
+                },
             });
         }),
+
+    getAccess : publicProcedure
+        .input(z.string())
+        .query(({ ctx, input }) => {
+            return ctx.db.user.findFirst({
+                where : {
+                    clerkId : input,
+                },
+                select : {
+                    hasAccessTo : true,
+                },
+            });
+       }),
 });
