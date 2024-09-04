@@ -6,8 +6,6 @@ import {
 
 import LandingPage from '../home/page';
 import '../../styles/globals.css';
-import Image from 'next/image';
-import microplastic from '../../../public/microplastic.jpg'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +17,11 @@ export default async function Dashboard() {
 
     const { userId } = auth();
     const getUser = await api.user.getById( userId );
+    const getLatest = await api.buoyData.getLatest( '1' );
+
+    var count : number = 0
+    getLatest.forEach( data => { count += data.detectedMicroplastics });
+
 
     return (
         <div>
@@ -32,23 +35,25 @@ export default async function Dashboard() {
                         <UserButton />
                     </div>
                     <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-[#303030] bg-opacity-50 text-white p-10 rounded-lg w-full h-full border-2 border-[#C9C794]'>
-                        <Image alt='Sample Image' src={microplastic} className='md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full'/>
+                        <div className=' md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full' >
+                            <img alt='Sample Image' src={ getLatest?.at(0)?.imgUrl } />
+                        </div>
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col gap-y-4'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
-                                <p className='font-bold'>August 7, 2024</p>
+                                <p className='font-bold'>{ getLatest?.at(0)?.createdAt.toLocaleDateString() }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>TIME:</p>
-                                <p className='font-bold'>12:30 PM</p>
+                                <p className='font-bold'>{ getLatest?.at(0)?.createdAt.toLocaleTimeString() }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>MICROPLASTICS DETECTED:</p>
-                                <p className='font-bold'>12</p>
+                                <p className='font-bold'>{ getLatest?.at(0)?.detectedMicroplastics }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>LOCATION:</p>
-                                <p className='font-bold'>MANILA CITY</p>
+                                <p className='font-bold'> MANILA BAY </p>
                             </div>
                         </div>
                         <div className='flex w-full items-start'>
@@ -61,7 +66,7 @@ export default async function Dashboard() {
                                 TOTAL MICROPLASTICS DETECTED
                             </p>
                             <p className='px-4 font-extrabold md:text-lg lg:text-xl 2xl:text-2xl'>
-                                12 MICROPLASTICS
+                                { count } MICROPLASTICS
                             </p>
                         </div>
                         <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full md:h-28 lg:h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
