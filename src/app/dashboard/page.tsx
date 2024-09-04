@@ -17,11 +17,17 @@ export default async function Dashboard() {
 
     const { userId } = auth();
     const getUser = await api.user.getById( userId );
+
+    const getBuoy = await api.buoy.getById( '1' )
+
     const getLatest = await api.buoyData.getLatest( '1' );
+    const getConfig = await api.config.getById( (getBuoy?.configId)?.toString() )
 
     var count : number = 0
     getLatest.forEach( data => { count += data.detectedMicroplastics });
 
+    var min_diff = getConfig?.interval * 60
+    const next_collection = new Date(getLatest.at(0)?.createdAt.getTime() + (min_diff)*60000).toLocaleString();
 
     return (
         <div>
@@ -53,7 +59,7 @@ export default async function Dashboard() {
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>LOCATION:</p>
-                                <p className='font-bold'> MANILA BAY </p>
+                                <p className='font-bold'> { getBuoy?.location } </p>
                             </div>
                         </div>
                         <div className='flex w-full items-start'>
@@ -74,7 +80,7 @@ export default async function Dashboard() {
                                 LOCATION
                             </p>
                             <p className='px-4 font-extrabold md:text-lg lg:text-xl 2xl:text-2xl'>
-                                MANILA CITY
+                                { getBuoy?.location }
                             </p>
                         </div>
                         <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 2xl:col-span-2 p-10 rounded-lg bg-[#303030] bg-opacity-50 w-full h-96 border-2 border-[#C9C794]'>
@@ -82,10 +88,10 @@ export default async function Dashboard() {
                         </div>
                         <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
-                                TIME UNTIL NEXT CAPTURE
+                                NEXT COLLECTION TIME
                             </p>
                             <p className='px-4 font-extrabold md:text-lg lg:text-xl 2xl:text-2xl'>
-                                5.32 HOURS
+                                { next_collection }
                             </p>
                         </div>
                         <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
