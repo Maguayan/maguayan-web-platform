@@ -40,4 +40,26 @@ export const buoyRouter = createTRPCRouter({
                 },
             });
         }),
+
+    update : publicProcedure
+        .input(z.object({
+          id : z.string(),
+          name : z.string(),
+          location : z.string(),
+          configId : z.string(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            return ctx.db.deployedBuoy.update({
+                where:{
+                    id : parseInt(input.id),
+                },
+                data: {
+                    name : input.name,
+                    location : input.location,
+                    configId : parseInt(input.configId),
+                },
+            });
+        }),
 });
