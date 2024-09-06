@@ -13,6 +13,20 @@ export const configRouter = createTRPCRouter({
             });
         }),
 
+    create : publicProcedure
+        .input(z.object({
+            interval: z.string(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            return ctx.db.buoyConfig.create({
+                data: {
+                    interval : parseInt(input.interval),
+                },
+            });
+        }),
+
     update : publicProcedure
         .input(z.object({
             id : z.string(),
