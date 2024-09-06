@@ -13,10 +13,20 @@ export const buoyDataRouter = createTRPCRouter({
             });
         }),
 
+    getByBuoy : publicProcedure
+        .input(z.string())
+        .query(({ ctx, buoy_id }) => {
+            return ctx.db.detectProcesses.findMany({
+                where : {
+                    bouyId : buoy_id,
+                },
+            });
+        }),
+
     getLatest : publicProcedure
         .input(z.string())
         .query(({ctx, buoy_id}) => {
-            return ctx.db.detectProcesses.findMany({
+            return ctx.db.detectProcesses.findFirst({
                 where : {
                     buoyId : buoy_id,
                 },

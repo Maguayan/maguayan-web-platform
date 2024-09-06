@@ -18,15 +18,16 @@ export default async function Dashboard() {
     const { userId } = auth();
     const getUser = await api.user.getById( userId );
     const getBuoy = await api.buoy.getById( '1' )
+    const getDetectList = await api.buoyData.getByBuoy( '1' );
     const getLatest = await api.buoyData.getLatest( '1' );
     const getConfig = await api.config.getById( (getBuoy?.configId)?.toString() )
     const getAccess = await api.access.getByBuoy( '1' )
 
     var count : number = 0
-    getLatest.forEach( data => { count += data.detectedMicroplastics });
+    getDetectList.forEach( data => { count += data.detectedMicroplastics });
 
     var min_diff = getConfig?.interval * 60
-    const next_collection = new Date(getLatest.at(0)?.createdAt.getTime() + (min_diff)*60000).toLocaleString();
+    const next_collection = new Date(getLatest?.createdAt.getTime() + (min_diff)*60000).toLocaleString();
 
     var access : boolean = false; 
     getAccess?.forEach( data => { 
@@ -48,20 +49,20 @@ export default async function Dashboard() {
                     </div>
                     <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-[#303030] bg-opacity-50 text-white p-10 rounded-lg w-full h-full border-2 border-[#C9C794]'>
                         <div className=' md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full' >
-                            <img alt='Sample Image' src={ getLatest?.at(0)?.imgUrl } />
+                            <img alt='Sample Image' src={ getLatest?.imgUrl } />
                         </div>
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col gap-y-4'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
-                                <p className='font-bold'>{ getLatest?.at(0)?.createdAt.toLocaleDateString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString() }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>TIME:</p>
-                                <p className='font-bold'>{ getLatest?.at(0)?.createdAt.toLocaleTimeString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString() }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>MICROPLASTICS DETECTED:</p>
-                                <p className='font-bold'>{ getLatest?.at(0)?.detectedMicroplastics }</p>
+                                <p className='font-bold'>{ getLatest?.detectedMicroplastics }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>LOCATION:</p>

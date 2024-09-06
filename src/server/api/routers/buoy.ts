@@ -22,4 +22,22 @@ export const buoyRouter = createTRPCRouter({
                 },
             })
         }),
+
+    create : publicProcedure
+        .input(z.object({
+          name : z.string(),
+          location : z.string(),
+          configId : z.string(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            return ctx.db.deployedBuoy.create({
+                data: {
+                    name : input.name,
+                    location : input.location,
+                    configId : input.configId,
+                },
+            });
+        }),
 });
