@@ -12,4 +12,22 @@ export const configRouter = createTRPCRouter({
                 },
             });
         }),
+
+    update : publicProcedure
+        .input(z.object({
+            id : z.string(),
+            interval: z.string(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            return ctx.db.buoyConfig.update({
+                where:{
+                    id : parseInt(input.id),
+                },
+                data: {
+                    interval : parseInt(input.interval),
+                },
+            });
+        }),
 });

@@ -36,7 +36,7 @@ export const buoyRouter = createTRPCRouter({
                 data: {
                     name : input.name,
                     location : input.location,
-                    configId : input.configId,
+                    configId : parseInt(input.configId),
                 },
             });
         }),
