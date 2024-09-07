@@ -16,7 +16,7 @@ import { auth } from '@clerk/nextjs/server';
 export default async function Dashboard() {
 
     const { userId } = auth();
-    const getUser = await api.user.getById( userId );
+    const getUser = await api.user.getById( userId !);
     const getBuoy = await api.buoy.getById( '1' )
     const getDetectList = await api.buoyData.getByBuoy( '1' );
     const getLatest = await api.buoyData.getLatest( '1' );
