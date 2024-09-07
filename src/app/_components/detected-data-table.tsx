@@ -29,7 +29,7 @@ export function DetectedDataTable() {
                                     <td className="py-3 px-6 border-b border-gray-300">{id.toString()}</td>
                                     <td className="py-3 px-6 border-b border-gray-300">{buoyData.data?.name ?? ""}</td>
                                     <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
-                                    <td className="py-3 px-6 border-b border-gray-300">{imgUrl}}</td>
+                                    <td className="py-3 px-6 border-b border-gray-300">{imgUrl}</td>
                                     <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString()}</td>
                                     <a className='py-3 px-6 text-blue-800 font-semibold flex' href="#">View</a>
                                 </tr>
