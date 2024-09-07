@@ -5,30 +5,30 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 export const accessRouter = createTRPCRouter({
     getById : publicProcedure
         .input(z.string())
-        .query(({ ctx, id }) => {
+        .query(({ ctx, input }) => {
             return ctx.db.buoyAccess.findFirst({
                 where : {
-                    id : id,
+                    id : parseInt(input),
                 },
             });
         }),
 
     getByBuoy : publicProcedure
         .input(z.string())
-        .query(({ ctx, buoy_id }) => {
+        .query(({ ctx, input }) => {
             return ctx.db.buoyAccess.findMany({
                 where : {
-                    buoyId : buoy_id,
+                    buoyId : parseInt(input),
                 },
             });
         }),
 
     getByUser : publicProcedure
         .input(z.string())
-        .query(({ ctx, user_id }) => {
+        .query(({ ctx, input }) => {
             return ctx.db.buoyAccess.findMany({
                 where : {
-                    userId : user_id,
+                    userId : parseInt(input),
                 },
             });
         }),

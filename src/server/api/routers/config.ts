@@ -5,10 +5,10 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 export const configRouter = createTRPCRouter({
     getById : publicProcedure
         .input(z.string())
-        .query(({ ctx, id }) => {
+        .query(({ ctx, input }) => {
             return ctx.db.buoyConfig.findFirst({
                 where : {
-                    id : id,
+                    id : parseInt(input),
                 },
             });
         }),

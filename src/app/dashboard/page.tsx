@@ -26,7 +26,7 @@ export default async function Dashboard() {
     var count : number = 0
     getDetectList.forEach( data => { count += data.detectedMicroplastics });
 
-    var min_diff = getConfig?.interval ! * 60
+    var min_diff = getConfig?.interval! * 60
     const next_collection = new Date(getLatest?.createdAt.getTime()! + (min_diff)*60000).toLocaleString();
 
     var access : boolean = false; 
