@@ -8,10 +8,11 @@ export function DetectedDataTable() {
   const buoyData = api.buoy.getById.useQuery('1');
   const data = api.buoyData.getByBuoy.useQuery(buoyData.data?.id.toString() ?? '0')
 
-  const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, createdAt, updatedAt }, index) => 
+  const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, locationTaken, createdAt, updatedAt }, index) => 
         <tr className='border-b border-gray-300' key={index}>
             <td className="py-3 px-6 border-b border-gray-300">{id.toString()}</td>
             <td className="py-3 px-6 border-b border-gray-300">{buoyData.data?.name ?? ""}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{locationTaken}</td>
             <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
             <td className="py-3 px-6 border-b border-gray-300">{imgUrl}</td>
             <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString()}</td>
@@ -26,6 +27,7 @@ export function DetectedDataTable() {
                     <tr>
                         <th className="py-3 px-6 text-left text-gray-600 font-semibold">ID</th>
                         <th className="py-3 px-6 text-left text-gray-600 font-semibold">Buoy</th>   
+                        <th className="py-3 px-6 text-left text-gray-600 font-semibold">Location Taken</th>
                         <th className="py-3 px-6 text-left text-gray-600 font-semibold">Microplastics Detected</th>
                         <th className="py-3 px-6 text-left text-gray-600 font-semibold">Image</th>
                         <th className="py-3 px-6 text-left text-gray-600 font-semibold">Date Taken</th>

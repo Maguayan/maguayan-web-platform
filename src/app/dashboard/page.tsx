@@ -66,7 +66,7 @@ export default async function Dashboard() {
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>LOCATION:</p>
-                                <p className='font-bold'> { getBuoy?.location } </p>
+                                <p className='font-bold'> { getLatest?.locationTaken } </p>
                             </div>
                         </div>
                         <div className='flex w-full items-start'>
