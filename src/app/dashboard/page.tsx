@@ -16,20 +16,20 @@ import { auth } from '@clerk/nextjs/server';
 export default async function Dashboard() {
 
     const { userId } = auth();
-    const getUser = await api.user.getById( userId || "");
-    const getBuoy = await api.buoy.getById( '1' )
+    const getUser = await api.user.getById( userId ?? "");
+    const getBuoy = await api.buoy.getById( '1' );
     const getDetectList = await api.buoyData.getByBuoy( '1' );
     const getLatest = await api.buoyData.getLatest( '1' );
-    const getConfig = await api.config.getById( ( getBuoy?.configId || 0 )?.toString() )
-    const getAccess = await api.access.getByBuoy( '1' )
+    const getConfig = await api.config.getById( ( getBuoy?.configId ?? 0 )?.toString() )
+    const getAccess = await api.access.getByBuoy( '1' );
 
-    let count : number = 0
+    let count = 0
     getDetectList.forEach( data => { count += data.detectedMicroplastics });
 
-    let min_diff = (getConfig?.interval || 0) * 60
-    const next_collection = new Date((getLatest?.createdAt.getTime() || 0) + (min_diff)*60000).toLocaleString();
+    const min_diff = (getConfig?.interval ?? 0) * 60
+    const next_collection = new Date((getLatest?.createdAt.getTime() ?? 0) + (min_diff)*60000).toLocaleString();
 
-    let access : boolean = false; 
+    let access  = false; 
     getAccess?.forEach( data => { 
         if (data.userId == getUser?.id) { 
                 access = true
