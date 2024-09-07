@@ -8,6 +8,16 @@ export function DetectedDataTable() {
   const buoyData = api.buoy.getById.useQuery('1');
   const data = api.buoyData.getByBuoy.useQuery(buoyData.data?.id.toString() ?? '0')
 
+  const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, createdAt, updatedAt }, index) => 
+        <tr className='border-b border-gray-300'>
+            <td className="py-3 px-6 border-b border-gray-300">{id.toString()}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{buoyData.data?.name ?? ""}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{imgUrl}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString()}</td>
+            <a className='py-3 px-6 text-blue-800 font-semibold flex' href="#">View</a>
+        </tr>);
+
   return (
     <div className="flex flex-row w-full max-w">
         <div className='flex flex-col gap-y-6 bg-white w-full rounded-lg min-h-52 px-16 py-16 overflow-x-auto'>
@@ -23,17 +33,7 @@ export function DetectedDataTable() {
                     </tr>
                 </thead>
                 <tbody>
-                        {
-                            data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, createdAt, updatedAt }, index) => 
-                                <tr className='border-b border-gray-300'>
-                                    <td className="py-3 px-6 border-b border-gray-300">{id.toString()}</td>
-                                    <td className="py-3 px-6 border-b border-gray-300">{buoyData.data?.name ?? ""}</td>
-                                    <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
-                                    <td className="py-3 px-6 border-b border-gray-300">{imgUrl}</td>
-                                    <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString()}</td>
-                                    <a className='py-3 px-6 text-blue-800 font-semibold flex' href="#">View</a>
-                                </tr>
-                        )}
+                        { rows }
                 </tbody>
             </table>
         </div>

@@ -33,6 +33,7 @@ export function UpdateConfig() {
     },
   });
 
+  const selections = options.map(({ value, label }, index) => <option value={value}>{label}</option>)
   return (
     <div className="flex flex-row w-full max-w">
       <div className='flex flex-col text-black w-64'>
@@ -53,7 +54,7 @@ export function UpdateConfig() {
                 id="interval" 
                 onChange={(e) => setInterval(e.target.value)}
                 className='border bg-gray-300 rounded-sm py-2 px-2 text-sm'>
-                {options.map(({ value, label }, index) => <option value={value}>{label}</option> )}
+                { selections }
             </select>
         </div>
         <button
