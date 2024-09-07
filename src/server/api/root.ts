@@ -1,5 +1,4 @@
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
-import { postRouter } from "~/server/api/routers/post";
 import { userRouter } from "./routers/user";
 import { buoyDataRouter } from "./routers/buoyData";
 import { buoyRouter } from "./routers/buoy";
