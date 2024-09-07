@@ -33,7 +33,8 @@ export function UpdateConfig() {
     },
   });
 
-  const selections = options.map(({ value, label }, index) => <option value={value}>{label}</option>)
+  const selections = options.map(({ value, label }, index) => <option key={index} value={value}>{label}</option>)
+
   return (
     <div className="flex flex-row w-full max-w">
       <div className='flex flex-col text-black w-64'>
