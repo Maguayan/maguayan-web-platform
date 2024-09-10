@@ -31,6 +31,7 @@ export const configRouter = createTRPCRouter({
         .input(z.object({
             id : z.string(),
             interval: z.string(),
+            status: z.string(),
         }))
         .mutation(async ({ ctx, input }) => {
             await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -41,6 +42,7 @@ export const configRouter = createTRPCRouter({
                 },
                 data: {
                     interval : parseInt(input.interval),
+                    requestStatus : input.status,
                 },
             });
         }),

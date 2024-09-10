@@ -26,9 +26,11 @@ export function UpdateConfig() {
 
   const [interval, setInterval] = useState("");
 
+
   const updateConfig = api.config.update.useMutation({
     onSuccess: async () => {
       await utils.config.invalidate();
+      
       setInterval("");
     },
   });
@@ -36,16 +38,20 @@ export function UpdateConfig() {
   const selections = options.map(({ value, label }, index) => <option key={index} value={value}>{label}</option>)
 
   return (
-    <div className="flex flex-row w-full max-w">
-      <div className='flex flex-col text-black w-64'>
+    <div className="grid grid-cols-3 w-full max-w">
+      <div className='flex flex-col col-span-1 text-black w-64'>
           <p className='font-bold mb-3'>Current Config Info</p>
           <p className='font-bold mb-3'>Interval between Collections : {buoyConfig.data?.interval} Hour/s</p>
       </div>
       <form 
-        className='flex flex-col gap-y-6 bg-white w-full rounded-lg min-h-52 px-8 py-4'
+        className='flex flex-col col-span-2 gap-y-6 bg-white w-full rounded-lg min-h-52 px-8 py-4'
         onSubmit={(e) => {
           e.preventDefault();
-          updateConfig.mutate({ id : buoyConfig.data?.id.toString() ?? "0", interval : interval });
+            updateConfig.mutate({ 
+                id : buoyConfig.data?.id.toString() ?? "0", 
+                interval : interval, 
+                status : "Processing" 
+            });
         }}
       >
         <div className='flex flex-col text-lg text-black w-full max-w-xs'>
@@ -53,7 +59,7 @@ export function UpdateConfig() {
             <select 
                 name="interval" 
                 id="interval" 
-                onChange={(e) => setInterval(e.target.value)}
+                onChange={(e) => setInterval(e.target.value) }
                 className='border bg-gray-300 rounded-sm py-2 px-2 text-sm'>
                 { selections }
             </select>
@@ -66,6 +72,9 @@ export function UpdateConfig() {
           {updateConfig.isPending ? "Submitting..." : "Submit"}
         </button>
       </form>
+      <div className="col-end-4">
+          <p className='font-bold pt-4 mb-3'>Status : {buoyConfig.data?.requestStatus}</p>
+      </div>
     </div>
   );
 }
