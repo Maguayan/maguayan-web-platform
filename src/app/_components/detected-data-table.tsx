@@ -7,7 +7,7 @@ import { useReactToPrint } from "react-to-print";
 
 export function DetectedDataTable() {
 
-    const componentPDF = useRef();
+    const componentPDF = useRef(null);
 
     const buoyData = api.buoy.getById.useQuery('1');
     const data = api.buoyData.getByBuoy.useQuery(buoyData.data?.id.toString() ?? '0')
