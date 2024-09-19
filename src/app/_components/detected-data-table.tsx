@@ -23,7 +23,7 @@ export function DetectedDataTable() {
         </tr>);
 
     const generatePDF = useReactToPrint({
-        content: ()=>componentPDF.current,
+        content: ()=>componentPDF.current ?? null,
         documentTitle: "Maguayan Detection Logs"
     });
 
