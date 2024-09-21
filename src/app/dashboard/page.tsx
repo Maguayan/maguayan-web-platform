@@ -54,11 +54,11 @@ export default async function Dashboard() {
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col gap-y-4'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
-                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString({timezone : 'PST'}) }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>TIME:</p>
-                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString('PST') }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString({timezone : 'PST'}) }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>MICROPLASTICS DETECTED:</p>
