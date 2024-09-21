@@ -58,7 +58,7 @@ export default async function Dashboard() {
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>TIME:</p>
-                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString('PST') }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>MICROPLASTICS DETECTED:</p>
