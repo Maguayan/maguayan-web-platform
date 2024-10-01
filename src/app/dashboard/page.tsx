@@ -10,6 +10,8 @@ import '../../styles/globals.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
+import { LineGraph } from '../_components/line';
+
 import { api } from '~/trpc/server';
 import { auth } from '@clerk/nextjs/server';
 
@@ -90,8 +92,10 @@ export default async function Dashboard() {
                                 { getBuoy?.location }
                             </p>
                         </div>
-                        <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 2xl:col-span-2 p-10 rounded-lg bg-white w-full h-96'>
-
+                        <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 2xl:col-span-2 p-10 rounded-lg bg-white w-full h-96 justify-center items-center'>
+                            <div className='w-full h-full'>
+                                <LineGraph />
+                            </div>
                         </div>
                         <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-white text-[#303030] w-full h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
@@ -115,8 +119,10 @@ export default async function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className='hidden lg:flex 2xl:hidden col-span-2 lg:col-span-2 p-10 rounded-lg bg-white w-full h-96'>
-
+                <div className='hidden lg:flex 2xl:hidden col-span-2 lg:col-span-2 p-10 rounded-lg bg-white w-full h-96 justify-center items-center'>
+                    <div className='w-full h-full'>
+                        <LineGraph />
+                    </div>
                 </div>
             </div>
             </SignedIn>
