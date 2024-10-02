@@ -10,6 +10,8 @@ import '../../styles/globals.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
+import { LineGraph } from '../_components/line';
+
 import { api } from '~/trpc/server';
 import { auth } from '@clerk/nextjs/server';
 
@@ -47,11 +49,11 @@ export default async function Dashboard() {
                         <a href="/settings" className='font-bold text-xs md:text-sm px-5 md:px-7 py-2 bg-[#C9C794] text-[#333333] rounded-lg hover:bg-[#333333] hover:text-white'>Settings <FontAwesomeIcon className='flex items-center ml-1' icon={faGear}/></a>
                         <UserButton />
                     </div>
-                    <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-[#303030] bg-opacity-50 text-white p-10 rounded-lg w-full h-full border-2 border-[#C9C794]'>
+                    <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-white text-[#303030] p-10 rounded-lg w-full h-full'>
                         <div className=' md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full' >
                             <img alt='Sample Image' src={ getLatest?.imgUrl } />
                         </div>
-                        <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col gap-y-4'>
+                        <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
                                 <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString({timezone : 'PST'}) }</p>
@@ -74,7 +76,7 @@ export default async function Dashboard() {
                         </div>
                     </div>
                     <div className='grid grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 col-span-2 lg:col-span-1 2xl:col-span-2 rounded-lg w-full h-full gap-x-4'>
-                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full md:h-28 lg:h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
+                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-white text-[#303030] w-full md:h-28 lg:h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
                                 TOTAL MICROPLASTICS DETECTED
                             </p>
@@ -82,7 +84,7 @@ export default async function Dashboard() {
                                 { count } MICROPLASTICS
                             </p>
                         </div>
-                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full md:h-28 lg:h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
+                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-white text-[#303030] w-full md:h-28 lg:h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
                                 LOCATION
                             </p>
@@ -90,10 +92,12 @@ export default async function Dashboard() {
                                 { getBuoy?.location }
                             </p>
                         </div>
-                        <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 2xl:col-span-2 p-10 rounded-lg bg-[#303030] bg-opacity-50 w-full h-96 border-2 border-[#C9C794]'>
-
+                        <div className='flex lg:hidden 2xl:flex col-span-2 lg:col-span-1 2xl:col-span-2 p-10 rounded-lg bg-white w-full h-96 justify-center items-center'>
+                            <div className='w-full h-full'>
+                                <LineGraph />
+                            </div>
                         </div>
-                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
+                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-white text-[#303030] w-full h-32 flex flex-col justify-center my-4 md:my-2 lg:my-4 2xl:my-0'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
                                 NEXT COLLECTION TIME
                             </p>
@@ -101,7 +105,7 @@ export default async function Dashboard() {
                                 { next_collection }
                             </p>
                         </div>
-                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-[#303030] bg-opacity-50 text-white w-full h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0 border-2 border-[#C9C794]'>
+                        <div className='col-span-2 md:col-span-1 p-10 rounded-lg bg-white text-[#303030] w-full h-32 flex flex-col justify-center md:my-2 lg:my-4 2xl:my-0'>
                             <p className='px-4 font-medium text-[0.8rem] md:text-xs lg:text-sm 2xl:text-md'>
                                 BATTERY STATUS
                             </p>
@@ -115,8 +119,10 @@ export default async function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className='hidden lg:flex 2xl:hidden col-span-2 lg:col-span-2 p-10 rounded-lg bg-[#303030] bg-opacity-50 w-full h-96 border-2 border-[#C9C794]'>
-
+                <div className='hidden lg:flex 2xl:hidden col-span-2 lg:col-span-2 p-10 rounded-lg bg-white w-full h-96 justify-center items-center'>
+                    <div className='w-full h-full'>
+                        <LineGraph />
+                    </div>
                 </div>
             </div>
             </SignedIn>
