@@ -18,7 +18,7 @@ export function DetectedDataTable() {
             <td className="py-3 px-6 border-b border-gray-300">{buoyData.data?.name ?? ""}</td>
             <td className="py-3 px-6 border-b border-gray-300">{locationTaken}</td>
             <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
-            <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString()}</td>
+            <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString('en-PH', { timeZone: 'Asia/Manila' })}</td>
             <a className='py-3 px-6 text-blue-800 font-semibold flex' href={imgUrl}>View</a>
         </tr>);
 

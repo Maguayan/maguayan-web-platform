@@ -29,7 +29,7 @@ export default async function Dashboard() {
     getDetectList.forEach( data => { count += data.detectedMicroplastics });
 
     const min_diff = (getConfig?.interval ?? 0) * 60
-    const next_collection = new Date((getLatest?.createdAt.getTime() ?? 0) + (min_diff)*60000).toLocaleString();
+    const next_collection = new Date((getLatest?.createdAt.getTime() ?? 0) + (min_diff)*60000).toLocaleString('en-PH', { timeZone: 'Asia/Manila' });
 
     let access  = false; 
     getAccess?.forEach( data => { 
@@ -56,11 +56,11 @@ export default async function Dashboard() {
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
-                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleDateString('en-PH', { timeZone: 'Asia/Manila' }) }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>TIME:</p>
-                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString() }</p>
+                                <p className='font-bold'>{ getLatest?.createdAt.toLocaleTimeString('en-PH', { timeZone: 'Asia/Manila' }) }</p>
                             </div>
                             <div className='flex flex-col md:flex-row font-medium gap-2'>
                                 <p>MICROPLASTICS DETECTED:</p>
