@@ -26,7 +26,7 @@ ChartJS.register(
 
 export const LineGraph = () => {
 
-    const options = {
+    const options : any = {
         animation: true,
         responsive: true,
         plugins: {
