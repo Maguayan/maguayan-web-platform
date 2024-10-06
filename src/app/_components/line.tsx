@@ -27,8 +27,11 @@ ChartJS.register(
 
 export const LineGraph = () => {
 
-    const buoyData = api.buoyData.getById.useQuery('1');
-    const data = api.buoyData.getByBuoy.useQuery(buoyData.data?.id.toString() ?? '0');
+    const buoy = api.buoyData.getById.useQuery('1');
+    const cur_date = new Date();
+    const month_date = new Date(cur_date.getFullYear(), cur_date.getMonth(), 1);
+    const id = buoy.data?.id.toString() ?? '0';
+    const data = api.buoyData.getThisMonth.useQuery({ id : id, date : month_date });
 
     const labels_data = data.data?.map(({createdAt}, index) => 
         createdAt.toLocaleString('en-PH', { timeZone : 'Asia/Manila' }),
@@ -71,5 +74,7 @@ export const LineGraph = () => {
 
     };
 
-    return <Line  options={options} data={lineChartData} />;
+    return <div>
+                <Line  options={options} data={lineChartData} />;
+           </div>
 };
