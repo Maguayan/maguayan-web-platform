@@ -2,20 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .backgroundImage {
-    background-image: url('../../public/bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  background-image: url("../../public/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-.cl-footer, .cl-signIn-password, .cl-signIn-forgotPasswordMethods{
+.cl-footerAction__signIn {
+  display: none;
+  background-color: rgba(30, 30, 30, 0.5);
+}
+
+/* .cl-footer, .cl-signIn-password, .cl-signIn-forgotPasswordMethods{
     background:rgba(30, 30, 30, 0.5);
 }
 
@@ -38,11 +43,6 @@
 
 .cl-internal-16mc20d a, .cl-internal-16mc20d p, .cl-internal-q2718p{
     color: white;
-}
-
-.cl-footerAction__signIn{
-    display: none;
-    background-color:rgba(30, 30, 30, 0.5);
 }
 
 .cl-signIn-start{
@@ -71,4 +71,4 @@
 .cl-button:hover{
     background: #C9C794;
     color: #333333;
-}
+} */
