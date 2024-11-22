@@ -7,6 +7,8 @@ import {
 import LandingPage from '../home/page';
 import '../../styles/globals.css';
 
+import * as React from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,6 +16,9 @@ import { LineGraph } from '../_components/line';
 
 import { api } from '~/trpc/server';
 import { auth } from '@clerk/nextjs/server';
+import Imagebox from '../_components/lightbox';
+
+
 
 export default async function Dashboard() {
 
@@ -50,9 +55,7 @@ export default async function Dashboard() {
                         <UserButton />
                     </div>
                     <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-white text-[#303030] p-10 rounded-lg w-full h-full'>
-                        <div className=' md:w-full lg:w-full 2xl:w-full h-full lg:h-auto 2xl:h-full' >
-                            <img alt='Sample Image' src={ getLatest?.imgUrl } />
-                        </div>
+                        <Imagebox image_url={ getLatest?.imgUrl }/>
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
