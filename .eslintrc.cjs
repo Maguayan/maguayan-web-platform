@@ -40,13 +40,6 @@ const config = {
         }
       }
     ]
-  },
-  "settings": {
-    "import/resolver":{
-        "node":{
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-        }
-    }
   }
 }
 module.exports = config;
