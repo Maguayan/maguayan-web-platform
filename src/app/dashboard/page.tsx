@@ -30,6 +30,8 @@ export default async function Dashboard() {
     const getConfig = await api.config.getById( ( getBuoy?.configId ?? 0 )?.toString() )
     const getAccess = await api.access.getByBuoy( '1' );
 
+    const today = new Date().toLocaleDateString('en-PH' , { timeZone: 'Asia/Manila' });
+
     let count = 0
     getDetectList.forEach( data => { count += data.detectedMicroplastics });
 
@@ -75,7 +77,7 @@ export default async function Dashboard() {
                             </div>
                         </div>
                         <div className='flex w-full items-start'>
-                            <a href="/logs?buoyId=1" className='bg-[#C9C794] text-[#333333] font-bold px-4 py-2 rounded-lg text-xs hover:bg-white hover:text-[333333]'>View Logs</a>
+                            <a href={"/logs?buoyId=1&dateFrom=01/01/1997&dateTo=".concat(today) } className='bg-[#C9C794] text-[#333333] font-bold px-4 py-2 rounded-lg text-xs hover:bg-white hover:text-[333333]'>View Logs</a>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 col-span-2 lg:col-span-1 2xl:col-span-2 rounded-lg w-full h-full gap-x-4'>
