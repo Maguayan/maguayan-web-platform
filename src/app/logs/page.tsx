@@ -10,9 +10,10 @@ import LandingPage from '../home/page';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faRotateLeft } from "@fortawesome/free-solid-svg-icons";
-import { DetectedDataTable } from '../_components/detected-data-table';
-import DateFilter from "../_components/detected-data-search";
 import { useSearchParams } from 'next/navigation';
+
+import { DetectedDataTable } from '../_components/detected-data-table';
+import { DateFilter } from "../_components/detected-data-search";
 
 export default function Logs(){
     const query = useSearchParams();

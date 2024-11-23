@@ -3,7 +3,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function DateFilter() {
+export function DateFilter() {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const pathname = usePathname();
