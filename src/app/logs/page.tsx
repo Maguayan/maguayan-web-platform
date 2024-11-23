@@ -14,6 +14,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { DetectedDataTable } from '../_components/detected-data-table';
 import { DateFilter } from "../_components/detected-data-search";
+import * as React from 'react';
 
 export default function Logs(){
     const query = useSearchParams();

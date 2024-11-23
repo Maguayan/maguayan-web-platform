@@ -22,7 +22,7 @@ import Imagebox from '../_components/lightbox';
 
 export default async function Dashboard() {
 
-    const { userId } = auth();
+    const { userId } = await auth();
     const getUser = await api.user.getById( userId ?? "");
     const getBuoy = await api.buoy.getById( '1' );
     const getDetectList = await api.buoyData.getByBuoy( '1' );

@@ -18,9 +18,6 @@ export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
     const buoyData = api.buoy.getById.useQuery(buoyId);
     const data = api.buoyData.getThisDateRange.useQuery({ id : buoyId, dateFrom : dateFrom, dateTo : dateTo })
 
-    console.log(dateFrom);
-    console.log(dateTo);
-
     const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, locationTaken, createdAt, updatedAt }, index) => 
         <tr className='border-b border-gray-300' key={index}>
             <td className="py-3 px-6 border-b border-gray-300">{id.toString()}</td>
