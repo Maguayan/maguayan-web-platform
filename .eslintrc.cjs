@@ -1,3 +1,5 @@
+import { Extensions } from "@prisma/client/runtime/library";
+
 /** @type {import("eslint").Linter.Config} */
 const config = {
   "parser": "@typescript-eslint/parser",
@@ -38,6 +40,13 @@ const config = {
         }
       }
     ]
+  },
+  "settings": {
+    "import/resolver":{
+        "node":{
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+    }
   }
 }
 module.exports = config;
