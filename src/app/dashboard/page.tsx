@@ -55,7 +55,7 @@ export default async function Dashboard() {
                         <UserButton />
                     </div>
                     <div className='flex flex-col lg:flex-col 2xl:flex-col items-center col-span-2 md:col-span-2 lg:col-span-1 2xl:col-span-1 bg-white text-[#303030] p-10 rounded-lg w-full h-full'>
-                        <Imagebox image_url={ getLatest?.imgUrl }/>
+                        <Imagebox image_url={ getLatest?.imgUrl ?? '' }/>
                         <div className='text-sm md:text-md lg:text-lg py-6 flex w-full lg:items-start 2xl:items-start flex-col'>
                             <div className='flex  flex-col md:flex-row font-medium gap-2'>
                                 <p>DATE TAKEN:</p>
