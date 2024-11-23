@@ -38,14 +38,20 @@ export const buoyDataRouter = createTRPCRouter({
             });
         }),
 
-    getThisMonth : publicProcedure
+    getThisDateRange : publicProcedure
         .input(z.object({
             id : z.string(),
+            dateFrom : z.date(),
+            dateTo : z.date(),
         }))
         .query(({ctx, input}) => {
             return ctx.db.detectProcesses.findMany({
                 where : {
                     buoyId : parseInt(input.id),
+                    createdAt : {
+                        gt : input.dateFrom,
+                        lt : input.dateTo,
+                    }
                 },
                 orderBy : [
                     {

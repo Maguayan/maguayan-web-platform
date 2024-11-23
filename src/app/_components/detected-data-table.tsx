@@ -5,12 +5,18 @@ import { useState, useRef } from "react";
 import { api } from "~/trpc/react";
 import { useReactToPrint } from "react-to-print";
 
-export function DetectedDataTable() {
+export interface BuoyLogsProps {
+        buoyId : string;
+        dateFrom : Date;
+        dateTo: Date;
+    }
+
+export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
 
     const componentPDF = useRef(null);
 
-    const buoyData = api.buoy.getById.useQuery('1');
-    const data = api.buoyData.getByBuoy.useQuery(buoyData.data?.id.toString() ?? '0')
+    const buoyData = api.buoy.getById.useQuery(buoyId);
+    const data = api.buoyData.getThisDateRange.useQuery({ id : buoyId, dateFrom : dateFrom, dateTo : dateTo })
 
     const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, locationTaken, createdAt, updatedAt }, index) => 
         <tr className='border-b border-gray-300' key={index}>
@@ -19,7 +25,9 @@ export function DetectedDataTable() {
             <td className="py-3 px-6 border-b border-gray-300">{locationTaken}</td>
             <td className="py-3 px-6 border-b border-gray-300">{detectedMicroplastics}</td>
             <td className="py-3 px-6 border-b border-gray-300">{createdAt.toLocaleString('en-PH', { timeZone: 'Asia/Manila' })}</td>
-            <a className='py-3 px-6 text-blue-800 font-semibold flex' href={imgUrl}>View</a>
+            <td>
+                <a className='py-3 px-6 text-blue-800 font-semibold flex' href={imgUrl}>View</a>
+            </td>
         </tr>);
 
     const generatePDF = useReactToPrint({
