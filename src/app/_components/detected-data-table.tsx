@@ -13,7 +13,7 @@ export interface BuoyLogsProps {
 
 export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
 
-    const componentPDF = useRef(null);
+    const componentPDF = useRef<HTMLDivElement>(null);
 
     const buoyData = api.buoy.getById.useQuery(buoyId);
     const data = api.buoyData.getThisDateRange.useQuery({ id : buoyId, dateFrom : dateFrom, dateTo : dateTo })
@@ -31,7 +31,7 @@ export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
         </tr>);
 
     const generatePDF = useReactToPrint({
-        content: ()=>componentPDF.current ?? null,
+        contentRef: componentPDF,
         documentTitle: "Maguayan Detection Logs"
     });
 
