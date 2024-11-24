@@ -1,4 +1,4 @@
-import { Extensions } from "@prisma/client/runtime/library";
+//import { Extensions } from "@prisma/client/runtime/library";
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
