@@ -55,7 +55,10 @@ export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
                         </tbody>
                     </table> 
                 </div>
-                <button className="bg-[#333333] text-white px-4 py-1 rounded-lg hover:bg-[#C9C794] hover:text-[#333333] font-semibold" onClick={ generatePDF }>Export Table to PDF</button>
+                <button className="bg-[#333333] text-white px-4 py-1 rounded-lg hover:bg-[#C9C794] hover:text-[#333333] font-semibold" 
+                        onClick={() => { generatePDF } }>
+                        Export Table to PDF
+                </button>
             </div>
         </div>
     );
