@@ -26,6 +26,9 @@ const config = {
         "fixStyle": "inline-type-imports"
       }
     ],
+    "@typescript-eslint/unbound-method": ["error", {
+      "ignoreStatic": true
+    }],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
