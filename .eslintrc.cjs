@@ -19,6 +19,12 @@ const config = {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@next/next/no-html-link-for-pages": "off",
+    "@typescript-eslint/unbound-method": [
+      "error", 
+      {
+        "ignoreStatic": true
+      }
+    ],
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {
@@ -26,9 +32,6 @@ const config = {
         "fixStyle": "inline-type-imports"
       }
     ],
-    "@typescript-eslint/unbound-method": ["error", {
-      "ignoreStatic": true
-    }],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
