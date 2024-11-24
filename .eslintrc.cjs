@@ -16,13 +16,14 @@ const config = {
   ],
   "rules": {
     "@next/next/no-img-element": "off",
+    "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/unbound-method": [
       "error", 
       {
-        "ignoreStatic": true
+        "ignoreStatic": true,
+        "whitelist": ["replace"],
       }
     ],
     "@typescript-eslint/consistent-type-imports": [
