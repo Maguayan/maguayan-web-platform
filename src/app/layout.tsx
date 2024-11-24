@@ -11,6 +11,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 // Font Awesome
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { Suspense } from 'react';
 config.autoAddCss = false;
 
 export const metadata = {
@@ -25,12 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider dynamic>
-      <html lang="en" className={`${GeistSans.variable}`}>
-        <body>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <Suspense>
+        <ClerkProvider dynamic>
+          <html lang="en" className={`${GeistSans.variable}`}>
+            <body>
+              <TRPCReactProvider>{children}</TRPCReactProvider>
+            </body>
+          </html>
+        </ClerkProvider>
+    </Suspense>
   );
 }

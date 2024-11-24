@@ -16,7 +16,7 @@ export function DetectedDataTable({ buoyId, dateFrom, dateTo }: BuoyLogsProps) {
     const componentPDF = useRef<HTMLDivElement>(null);
 
     const buoyData = api.buoy.getById.useQuery(buoyId);
-    const data = api.buoyData.getThisDateRange.useQuery({ id : buoyId, dateFrom : dateFrom, dateTo : dateTo })
+    const data = api.buoyData.getThisDateRange.useQuery({ id : buoyId, dateFrom : dateFrom.toISOString(), dateTo : dateTo.toISOString() })
 
     const rows = data.data?.map(({ id, buoyId, detectedMicroplastics, imgUrl, locationTaken, createdAt, updatedAt }, index) => 
         <tr className='border-b border-gray-300' key={index}>
