@@ -26,14 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Suspense>
-        <html lang="en" className={`${GeistSans.variable}`}>
-          <ClerkProvider dynamic>
-              <body>
-                <TRPCReactProvider>{children}</TRPCReactProvider>
-              </body>
-          </ClerkProvider>
-        </html>
-    </Suspense>
+    <html lang="en" className={`${GeistSans.variable}`}>
+        <ClerkProvider dynamic>
+            <body>
+              <TRPCReactProvider>{children}</TRPCReactProvider>
+            </body>
+        </ClerkProvider>
+    </html>
   );
 }
