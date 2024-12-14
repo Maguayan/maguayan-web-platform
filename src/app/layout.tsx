@@ -27,13 +27,13 @@ export default function RootLayout({
 }) {
   return (
     <Suspense>
-        <ClerkProvider dynamic>
-          <html lang="en" className={`${GeistSans.variable}`}>
-            <body>
-              <TRPCReactProvider>{children}</TRPCReactProvider>
-            </body>
-          </html>
-        </ClerkProvider>
+        <html lang="en" className={`${GeistSans.variable}`}>
+          <ClerkProvider dynamic>
+              <body>
+                <TRPCReactProvider>{children}</TRPCReactProvider>
+              </body>
+          </ClerkProvider>
+        </html>
     </Suspense>
   );
 }
